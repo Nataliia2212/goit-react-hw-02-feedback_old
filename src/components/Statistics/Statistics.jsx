@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
-
+import css from './Statistics.module.css'
 
 export const Statistics = ({options, stats, total, positivePercentage}) => {
     return <>
         <ul>
             {options.map(({title}) => (
-                <li key={title}>{title}: <span>{stats[title]}</span></li>
+                <li key={title} className={css.item}>{title}: <span>{stats[title]}</span></li>
             ))}
-            <li>Total: {total()}</li>
-            <li>Positive feedback: {positivePercentage()}%</li>
+            <li className={css.item}>Total: {total()}</li>
+            <li className={css.item}>Positive feedback: {positivePercentage()}%</li>
         </ul>
     </>
     
