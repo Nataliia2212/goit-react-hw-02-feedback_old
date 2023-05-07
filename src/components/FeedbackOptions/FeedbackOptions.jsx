@@ -20,5 +20,5 @@ FeedbackOptions.propTypes = {
             title: PropTypes.string.isRequired,
         })
     ),
-    onLeaveFeedback: PropTypes.func
+    onLeaveFeedback: PropTypes.func.isRequired
 }

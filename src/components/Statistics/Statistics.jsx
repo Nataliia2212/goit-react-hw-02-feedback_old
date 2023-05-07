@@ -14,3 +14,13 @@ export const Statistics = ({options, stats, total, positivePercentage}) => {
     
 }
 
+Statistics.propTypes = {
+    options: PropTypes.arrayOf(
+        PropTypes.exact({
+            title: PropTypes.string.isRequired,
+        })
+    ),
+    stats: PropTypes.objectOf(PropTypes.number.isRequired),
+    total: PropTypes.func.isRequired,
+    positivePercentage: PropTypes.func.isRequired,
+}
