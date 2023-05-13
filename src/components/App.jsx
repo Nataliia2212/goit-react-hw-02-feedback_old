@@ -5,12 +5,6 @@ import { Notification } from './Notification/Notification';
 import { Statistics } from './Statistics/Statistics';
 
 
-const options = [
-    { title: 'good'},
-    { title: 'neutral'},
-    {title: 'bad'}
-]
-
 export class App extends Component {
   state = {
     good: 0,
@@ -19,7 +13,7 @@ export class App extends Component {
   }
 
   handleClick = (event) => {
-    const {name} = event.target
+    const { name } = event.target
     this.setState(
       prevState => ({
       [name]: prevState[name] + 1,
@@ -38,6 +32,7 @@ export class App extends Component {
   }
 
   render() {
+    const { good, neutral, bad } = this.state;
     return (
       <div
         style={{
@@ -51,7 +46,7 @@ export class App extends Component {
       >
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={options}
+            options={Object.keys(this.state)}
             onLeaveFeedback={this.handleClick} />
         </Section>
         
@@ -59,8 +54,9 @@ export class App extends Component {
           {this.countTotalFeedback() === 0 ?
             <Notification message="There is no feedback" /> :
             <Statistics
-              options={options}
-              stats={this.state}
+              good={good}
+              neutral={neutral}
+              bad={bad}
               total={this.countTotalFeedback}
               positivePercentage={this.countPositiveFeedbackPercentage}/>}
         </Section>
